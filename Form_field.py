@@ -7,6 +7,9 @@ ctk.set_appearance_mode("System")
 
 ctk.set_default_color_theme("dark-blue")
 
+if not os.path.exists('./Convert_Folder'): # makes a convert folder if doesnt exist, this folder is where you put the pdfs 
+    os.makedirs('./Convert_Folder')
+
 appWidth, appHeight = 600, 700
 
 class App(ctk.CTk):
