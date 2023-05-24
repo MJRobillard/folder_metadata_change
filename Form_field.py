@@ -61,12 +61,19 @@ class App(ctk.CTk):
             writer.add_metadata(new_metadata)
             with open(source, 'wb') as fileout:
                 writer.write(fileout)
+                
+    def new_custom_field(self):
+        tag = ctk.CTkInputDialog(text="Metadata tag:", title="Test").get_input()
+        default_text = ctk.CTkInputDialog(text="Metadata tag:", title="Test").get_input()
+        App.make_field(self,tag,default_text)
 
 if __name__ == "__main__":
     app = App()
-    app.make_field("Title", "Lord of the Rings")
-    app.make_field("Author", "J.R.R Tolkein")
-    app.make_field("Keywords", "Magic, Fantasy, Elves")
-    app.make_field("Subject","Fantasy") #adds a new field like so, the tag in first, then the default text
+    #app.make_field("Title", "Lord of the Rings")
+    #app.make_field("Author", "J.R.R Tolkein")
+    #app.make_field("Keywords", "Magic, Fantasy, Elves")
+    #app.make_field("Subject","Fantasy") #adds a new field like so, the tag in first, then the default text
+    other_button = ctk.CTkButton(app, text="Other Metadata (Careful)", command= app.new_custom_field)
+    other_button.grid(row=10, column=1, padx=20, pady=20, sticky='ew')
     # Used to run the application
     app.mainloop()
