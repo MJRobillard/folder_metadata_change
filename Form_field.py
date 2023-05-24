@@ -13,7 +13,7 @@ class App(ctk.CTk):
     count = 0
     memory = {}
     
-    def make_field(self, title, place_holder): #function to make a new field, useful if later you want new default metadata options
+    def make_field(self, title, place_holder, column = 0): #function to make a new field, useful if later you want new default metadata options
         self.title_field = ctk.CTkLabel(self, text=title)
         self.title_field.grid(row=App.count, column=0, padx=20, pady=20, sticky='ew')
 
@@ -28,11 +28,12 @@ class App(ctk.CTk):
         self.title("GUI for remediation")
         self.geometry(f"{appWidth}x{appHeight}")
         # Info for presenting the title form field
-        self.display_box = ctk.CTkTextbox(self, width=200, height=100)# makes the display box so you know it worked
-        self.display_box.grid(row=6, column=0, columnspan=4, padx=20, pady=20, sticky="nsew")
-        
         self.generateResultsButton = ctk.CTkButton(self, text="Generate Results", command=self.setMetadata)# gen results button leads to the create Text
-        self.generateResultsButton.grid(row=5, column=1, columnspan=2, padx=20, pady=20, sticky="ew")
+        self.generateResultsButton.grid(row=0, column=4, columnspan=2, padx=20, pady=20, sticky="ew")
+        
+        self.display_box = ctk.CTkTextbox(self, width=200, height=100)# makes the display box so you know it worked
+        self.display_box.grid(row=1, column=4, columnspan=4, padx=20, pady=20, sticky="nsew")
+        
         
     def setMetadata(self):
         text = [key +': ' +App.memory[key].get() for key in App.memory]
