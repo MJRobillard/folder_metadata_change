@@ -65,7 +65,8 @@ class App(ctk.CTk):
             writer.add_metadata(new_metadata)
             with open(source, 'wb') as fileout:
                 writer.write(fileout)
-                
+ 
+               
     def new_custom_field(self):
         tag = ctk.CTkInputDialog(text="tag type (careful)", title="Test").get_input()
         default_text = ctk.CTkInputDialog(text="example of entry", title="Test").get_input()
